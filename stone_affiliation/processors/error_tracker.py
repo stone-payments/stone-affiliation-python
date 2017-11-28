@@ -1,5 +1,6 @@
 from requests import codes
 from stone_affiliation import errors
+from stone_affiliation.models.status import Status
 
 
 def track_error(response):

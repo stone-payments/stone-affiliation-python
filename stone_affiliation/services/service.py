@@ -1,47 +1,58 @@
+# -*- coding: utf-8 -*-
 
 from collections import OrderedDict
-from requests import codes
-from stone_affiliation import (request, errors, processors)
-from stone_affiliation.models.status import Status
+from stone_affiliation import (request, processors)
+from stone_affiliation.models.operator import Comparison
+
 
 CONTEXTS = {
     "merchant": "/Merchant/MerchantService.svc"
 }
 
+CONDITION_TYPE = "Condition:#Stone.ServiceLayer.Affiliation.DataContracts"
+
 
 class Service(object):
+    """
+    Service abstrai um servico
+    """
+
     def __init__(self, api_url, app_key, secret_key,
-                 source_ip="", user_email=""):
+                 source_ip=None, user_email=None):
 
         self.api_url = api_url
         self.app_key = app_key
         self.secret_key = secret_key
-        self.source_ip = source_ip
-        self.user_email = user_email
+        self.source_ip = source_ip or ""
+        self.user_email = user_email or ""
 
     def _request(self, url, data):
         return self._process_response(request.post(url, json=data))
 
     def _process_response(self, response):
-        return processors.track_error(response)
+        return processors.track_error(response).json()
 
-    def build_condition(self, field, value, comparison_operator=None):
+    def build_condition(self, field, value, comparison_operator):
+        if not isinstance(comparison_operator, Comparison):
+            raise TypeError(
+                "comparison_operator should be an Comparator Enum")
+
         return OrderedDict([
-            ("__type", "Condition:#Stone.ServiceLayer.Affiliation.DataContracts"),
-            ("ComparisonOperator", comparison_operator or ""),
+            ("__type", CONDITION_TYPE),
+            ("ComparisonOperator", comparison_operator.value),
             ("Field", field),
             ("Value", value)
         ])
 
     def build_url(self, resource_path):
-        return "{}/{}".format(self.api_url, resource_path)
+        return "{}{}".format(self.api_url, resource_path)
 
     def _base_data(self, endpoint):
         return {
-            "UserCredential": self._credentials(endpoint)
+            "UserCredential": self._build_credentials(endpoint)
         }
 
-    def _credentials(self, endpoint):
+    def _build_credentials(self, endpoint):
         return {
             "EffectiveUserId": self.user_email,
             "Signature": self._build_signature(endpoint),
