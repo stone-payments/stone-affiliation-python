@@ -1,8 +1,15 @@
+# -*- coding: utf-8 -*-
+
 from tests.suite import TestSuite
 from stone_affiliation.services import Merchant
 
 
 class TestMerchant(TestSuite):
+    """
+    TestMerchant testa a integração da classe de serviço Merchant
+    com a API de credenciamento
+    """
+
     def setUp(self):
         self.service = Merchant(**self.get_config())
         self.merchant = self.get_merchant()
