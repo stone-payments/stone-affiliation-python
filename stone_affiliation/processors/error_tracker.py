@@ -1,5 +1,5 @@
 from requests import codes
-from affiliation_sdk import errors
+from stone_affiliation import errors
 
 
 def track_error(response):

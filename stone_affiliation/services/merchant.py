@@ -1,5 +1,5 @@
-from affiliation_sdk.services.service import Service, CONTEXTS
-from affiliation_sdk.models.operator import Comparison
+from stone_affiliation.services.service import Service, CONTEXTS
+from stone_affiliation.models.operator import Comparison
 
 
 BASE_PATH = "{}/merchant".format(CONTEXTS["merchant"])

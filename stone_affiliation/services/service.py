@@ -1,8 +1,8 @@
 
 from collections import OrderedDict
 from requests import codes
-from affiliation_sdk import (request, errors, processors)
-from affiliation_sdk.models.status import Status
+from stone_affiliation import (request, errors, processors)
+from stone_affiliation.models.status import Status
 
 CONTEXTS = {
     "merchant": "/Merchant/MerchantService.svc"

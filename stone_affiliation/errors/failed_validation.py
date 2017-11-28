@@ -1,4 +1,4 @@
-from affiliation_sdk.errors.error import Error
+from stone_affiliation.errors.error import Error
 
 
 class FailedValidation(Error):
