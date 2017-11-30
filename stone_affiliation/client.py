@@ -1,4 +1,4 @@
-from stone_affiliation.services import Merchant
+from stone_affiliation.services import (Merchant, BankAccount)
 
 
 class StoneAffiliation(object):
@@ -13,3 +13,8 @@ class StoneAffiliation(object):
         return Merchant(user_email=user_email,
                         source_ip=source_ip,
                         **self.config)
+
+    def bank_account_service(self, user_email=None, source_ip=None):
+        return BankAccount(user_email=user_email,
+                           source_ip=source_ip,
+                           **self.config)
