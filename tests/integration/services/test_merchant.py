@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from tests.suite import TestSuite
+from tests.integration.services.suite import TestSuite
 from stone_affiliation.services import Merchant
 
 
@@ -11,15 +11,8 @@ class TestMerchant(TestSuite):
     """
 
     def setUp(self):
+        super().setUp()
         self.service = Merchant(**self.get_config())
-        self.merchant = self.get_merchant()
-
-    def get_merchant(self):
-        try:
-            resp = self.service.list(limit=1)
-            return resp.get("ListedMerchants")[0]
-        except Exception as e:
-            self.fail("Fail on fetch merchants. Exception: " + str(e))
 
     def test_get_by_id(self):
         resp = self.service.get_by_id(self.merchant["Id"])

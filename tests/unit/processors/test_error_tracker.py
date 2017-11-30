@@ -55,3 +55,8 @@ class TestErrorTracker(TestSuite):
             self.response.status_code = i
             with self.assertRaises(errors.Error):
                 track_error(self.response)
+
+    def test_track_error_success(self):
+        self.response.json.return_value["Status"]["Code"] = "OK"
+        self.response.status_code = 200
+        track_error(self.response)

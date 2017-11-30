@@ -61,3 +61,4 @@ class TestMerchant(TestSuite):
                 "RowsPerPage": 1000
             }
         })
+        self.assertEqual(actual, 'response')
