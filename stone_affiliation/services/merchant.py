@@ -12,12 +12,10 @@ LOGGER = logging.getLogger(__name__)
 BASE_PATH = "{}/merchant".format(CONTEXTS["merchant"])
 
 ENDPOINTS = {
-    "get": "GetBasicMerchant",
     "list": "ListMerchants"
 }
 
 URLS = {
-    "get": "{}/{}/".format(BASE_PATH, ENDPOINTS["get"]),
     "list": "{}/{}/".format(BASE_PATH, ENDPOINTS["list"])
 }
 
