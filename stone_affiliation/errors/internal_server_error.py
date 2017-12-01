@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+"""
+Módulo de erro interno do servidor
+"""
 from stone_affiliation.errors.error import Error
 
 

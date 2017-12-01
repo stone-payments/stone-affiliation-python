@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+"""
+Módulo contendo serviço que lida com operações de cliente
+"""
 import logging
 from stone_affiliation.services.service import Service, CONTEXTS
 from stone_affiliation.models.operator import Comparison
@@ -43,6 +46,9 @@ class Merchant(Service):
         return self.list(query=query)
 
     def list(self, page=1, limit=100, query=None):
+        """
+        list retorna clientes com base em query passada
+        """
         LOGGER.info("Listing merchants. Page: %d; Limit: %d", page, limit)
 
         data = self._base_data(ENDPOINTS["list"])

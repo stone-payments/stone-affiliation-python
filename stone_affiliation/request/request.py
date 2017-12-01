@@ -1,4 +1,8 @@
-# Implement http request
+# -*- coding: utf-8 -*-
+
+"""
+Módulo encapsula biblioteca de http request
+"""
 import requests
 
 

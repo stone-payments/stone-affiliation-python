@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+"""
+Módulo contendo serviço base para outros serviços
+"""
 import logging
 from collections import OrderedDict
 from stone_affiliation import (request, processors)
@@ -33,17 +36,18 @@ class Service(object):
 
         return self._process_response(request.post(url, json=data))
 
-    def _process_response(self, response):
+    @classmethod
+    def _process_response(cls, response):
         LOGGER.debug("Processing response")
 
         return processors.track_error(response).json()
 
-    def build_condition(self, field, value, comparison_operator):
+    @classmethod
+    def build_condition(cls, field, value, comparison_operator):
         LOGGER.info("Building condition to Field: %s; Value: %s", field, value)
 
         if not isinstance(comparison_operator, Comparison):
-            LOGGER.info("Invalid comparison sent: {}".format(
-                comparison_operator))
+            LOGGER.info("Invalid comparison sent: %s", comparison_operator)
 
             raise TypeError(
                 "comparison_operator should be an Comparator Enum")

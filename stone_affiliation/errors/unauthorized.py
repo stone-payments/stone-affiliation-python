@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+"""
+Módulo de erro de autorização
+"""
 from stone_affiliation.errors.error import Error
 
 

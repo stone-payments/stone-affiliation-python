@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+
+"""
+Pacote com processadores de criptografia
+"""
 import hashlib
 import hmac
 

@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 
+"""
+Módulo contendo serviço que lida com operações de conta bancária
+"""
+
 import logging
 from stone_affiliation.services.service import Service, CONTEXTS
-from stone_affiliation.models.operator import Comparison
 
 LOGGER = logging.getLogger(__name__)
 
@@ -19,7 +22,7 @@ URLS = {
 
 class BankAccount(Service):
     """
-    BankAccount implementa um serviço de operações CRUD de 
+    BankAccount implementa um serviço de operações CRUD de
     contas bancárias de clientes
     """
 
