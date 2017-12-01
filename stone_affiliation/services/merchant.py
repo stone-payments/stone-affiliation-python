@@ -26,7 +26,7 @@ class Merchant(Service):
 
     def get_by_id(self, identifier):
         LOGGER.info("Getting merchant with id %d", identifier)
-        
+
         query = [
             self.build_condition("Id", identifier,
                                  Comparison.EQUALS)
@@ -35,7 +35,7 @@ class Merchant(Service):
 
     def get_by_stonecode(self, stonecode):
         LOGGER.info("Getting merchant with stonecode %s", stonecode)
-        
+
         query = [
             self.build_condition("StoneCode", stonecode,
                                  Comparison.EQUALS)
