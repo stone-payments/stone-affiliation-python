@@ -17,4 +17,4 @@ class InternalServerError(Error):
         if data:
             message = data.get("Status", {}).get("Message", message)
 
-        super().__init__(message)
+        super(InternalServerError, self).__init__(message)

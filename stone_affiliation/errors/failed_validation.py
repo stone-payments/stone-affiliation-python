@@ -23,4 +23,4 @@ class FailedValidation(Error):
         for error in errors:
             message += "{}\n".format(error.get("Message"))
 
-        super().__init__(message)
+        super(FailedValidation, self).__init__(message)
