@@ -23,7 +23,7 @@ def track_error(response):
             error = errors.factory.STATUS.get(status)
 
             if error:
-                raise error(data["MessageList"])
+                raise error(data)
 
             raise errors.Error(
                 "Could not track error from response {}".format(str(data)))

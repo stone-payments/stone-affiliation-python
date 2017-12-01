@@ -7,4 +7,11 @@ class InternalServerError(Error):
     """
     InternalServerError encapsula erros internos do servidor
     """
-    pass
+
+    def __init__(self, data=None):
+        message = "Internal server error"
+
+        if data:
+            message = data.get("Status", {}).get("Message", message)
+
+        super().__init__(message)
