@@ -34,12 +34,30 @@ class Merchant(Service):
         ]
         return self.list(query=query)
 
+    def get_by_ids(self, identifiers):
+        LOGGER.info("Getting merchant with ids %d", identifiers)
+
+        query = [
+            self.build_condition("Id", identifiers,
+                                 Comparison.IN)
+        ]
+        return self.list(query=query)
+
     def get_by_stonecode(self, stonecode):
         LOGGER.info("Getting merchant with stonecode %s", stonecode)
 
         query = [
             self.build_condition("StoneCode", stonecode,
                                  Comparison.EQUALS)
+        ]
+        return self.list(query=query)
+
+    def get_by_stonecodes(self, stonecodes):
+        LOGGER.info("Getting merchant with stonecodes %s", stonecodes)
+
+        query = [
+            self.build_condition("StoneCode", stonecodes,
+                                 Comparison.IN)
         ]
         return self.list(query=query)
 

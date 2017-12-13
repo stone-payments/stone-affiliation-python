@@ -52,6 +52,9 @@ class Service(object):
             raise TypeError(
                 "comparison_operator should be an Comparator Enum")
 
+        if isinstance(value, list):
+            value = ",".join([str(item) for item in value])
+
         return OrderedDict([
             ("__type", CONDITION_TYPE),
             ("ComparisonOperator", comparison_operator.value),

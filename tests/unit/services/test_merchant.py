@@ -40,6 +40,37 @@ class TestMerchant(TestSuite):
 
         mock_requester.assert_called_once_with(query=["condition"])
 
+    @patch("stone_affiliation.services.service.Service.build_condition",
+           return_value="condition")
+    @patch("stone_affiliation.services.Merchant.list")
+    def test_get_by_stonecodes(self, mock_requester, mock_builder):
+        stonecodes = []
+
+        for _ in range(0, 10):
+            stonecodes.append(randint(0, 1000))
+
+        actual = self.service.get_by_stonecodes(stonecodes)
+
+        mock_builder.assert_called_once_with(
+            "StoneCode", stonecodes, Comparison.IN)
+
+        mock_requester.assert_called_once_with(query=["condition"])
+
+    @patch("stone_affiliation.services.service.Service.build_condition",
+           return_value="condition")
+    @patch("stone_affiliation.services.Merchant.list")
+    def test_get_by_ids(self, mock_requester, mock_builder):
+        identifiers = []
+
+        for _ in range(0, 10):
+            identifiers.append(randint(0, 1000))
+
+        actual = self.service.get_by_ids(identifiers)
+
+        mock_builder.assert_called_once_with("Id", identifiers, Comparison.IN)
+
+        mock_requester.assert_called_once_with(query=["condition"])
+
     @patch("stone_affiliation.services.service.Service._base_data",
            return_value={})
     @patch("stone_affiliation.services.service.Service.build_url",
