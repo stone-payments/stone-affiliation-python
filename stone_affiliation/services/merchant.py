@@ -26,7 +26,7 @@ class Merchant(Service):
     """
 
     def get_by_id(self, identifier):
-        LOGGER.info("Getting merchant with id %d", identifier)
+        LOGGER.info("Getting merchant with id %s", identifier)
 
         query = [
             self.build_condition("Id", identifier,
@@ -35,7 +35,7 @@ class Merchant(Service):
         return self.list(query=query)
 
     def get_by_ids(self, identifiers):
-        LOGGER.info("Getting merchant with ids %d", identifiers)
+        LOGGER.info("Getting merchant with ids %s", identifiers)
 
         query = [
             self.build_condition("Id", identifiers,
