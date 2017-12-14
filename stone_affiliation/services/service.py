@@ -44,6 +44,10 @@ class Service(object):
 
     @classmethod
     def build_condition(cls, field, value, comparison_operator):
+        """
+        build_condition recebe valores para construir condição
+        para endpoints de listagem
+        """
         LOGGER.info("Building condition to Field: %s; Value: %s", field, value)
 
         if not isinstance(comparison_operator, Comparison):
