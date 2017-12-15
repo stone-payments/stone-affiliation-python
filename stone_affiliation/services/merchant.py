@@ -19,6 +19,8 @@ URLS = {
     "list": "{}/{}/".format(BASE_PATH, ENDPOINTS["list"])
 }
 
+DEFAULT_LIMIT_PAGE = 100
+DEFAULT_PAGE = 1
 
 class Merchant(Service):
     """
@@ -34,7 +36,7 @@ class Merchant(Service):
         ]
         return self.list(query=query)
 
-    def get_by_ids(self, identifiers, page=1):
+    def get_by_ids(self, identifiers, page=DEFAULT_PAGE):
         LOGGER.info("Getting merchant with ids %s", identifiers)
 
         query = [
@@ -52,7 +54,7 @@ class Merchant(Service):
         ]
         return self.list(query=query)
 
-    def get_by_stonecodes(self, stonecodes, page=1):
+    def get_by_stonecodes(self, stonecodes, page=DEFAULT_PAGE):
         LOGGER.info("Getting merchant with stonecodes %s", stonecodes)
 
         query = [
@@ -61,7 +63,7 @@ class Merchant(Service):
         ]
         return self.list(query=query, page=page)
 
-    def list(self, page=1, limit=100, query=None):
+    def list(self, page=DEFAULT_PAGE, limit=DEFAULT_LIMIT_PAGE, query=None):
         """
         list retorna clientes com base em query passada
         """
