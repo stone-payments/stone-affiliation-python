@@ -47,6 +47,14 @@ class TestService(TestSuite):
         self.assertEqual(actual["Field"], "FIELD")
         self.assertEqual(actual["Value"], "VALUE")
 
+        actual = self.service.build_condition(
+            "FIELD", [1, 2, 3, 4], Comparison.IN)
+
+        self.assertEqual(actual["__type"], CONDITION_TYPE)
+        self.assertEqual(actual["ComparisonOperator"], Comparison.IN.value)
+        self.assertEqual(actual["Field"], "FIELD")
+        self.assertEqual(actual["Value"], "1,2,3,4")
+
     def test_build_url(self):
         actual = self.service.build_url("/my_resource")
 

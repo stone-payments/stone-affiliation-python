@@ -4,7 +4,7 @@ Modulo para setup de distribuição
 from setuptools import setup, find_packages
 
 setup(name="stone_affiliation",
-      version="0.0.1",
+      version="0.2.0",
       description="Stone Affiliation API client",
       long_description=open("README.md").read().strip(),
       author="Dev RC",
