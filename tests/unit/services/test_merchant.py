@@ -49,12 +49,12 @@ class TestMerchant(TestSuite):
         for _ in range(0, 10):
             stonecodes.append(randint(0, 1000))
 
-        actual = self.service.get_by_stonecodes(stonecodes)
+        actual = self.service.get_by_stonecodes(stonecodes, 2)
 
         mock_builder.assert_called_once_with(
             "StoneCode", stonecodes, Comparison.IN)
 
-        mock_requester.assert_called_once_with(query=["condition"])
+        mock_requester.assert_called_once_with(query=["condition"], page=2)
 
     @patch("stone_affiliation.services.service.Service.build_condition",
            return_value="condition")
@@ -65,11 +65,11 @@ class TestMerchant(TestSuite):
         for _ in range(0, 10):
             identifiers.append(randint(0, 1000))
 
-        actual = self.service.get_by_ids(identifiers)
+        actual = self.service.get_by_ids(identifiers, 2)
 
         mock_builder.assert_called_once_with("Id", identifiers, Comparison.IN)
 
-        mock_requester.assert_called_once_with(query=["condition"])
+        mock_requester.assert_called_once_with(query=["condition"], page=2)
 
     @patch("stone_affiliation.services.service.Service._base_data",
            return_value={})
