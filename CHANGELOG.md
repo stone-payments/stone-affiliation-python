@@ -2,7 +2,7 @@
 
 Todas as mudanças neste projeto são documentadas neste arquivo seguindo as regras de formatação de [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/). O padrão de versionamento adotado é o sugerido por [Semantic Versioning 2.0](http://semver.org/).
 
-## Unreleased
+## [0.3.0](https://github.com/stone-payments/stone-affiliation-python/tree/v0.3.0) - 2017-03-08
 ### Added
 - Adiciona serviço que faz retorna dados básicos do lojista
 
