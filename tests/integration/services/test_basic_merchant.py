@@ -4,9 +4,9 @@ from tests.integration.services.suite import TestSuite
 from stone_affiliation.services import BasicMerchant
 
 
-class TestBankAccount(TestSuite):
+class TestBasicMerchant(TestSuite):
     """
-    TestBankAccount testa a integração da classe de serviço BankAccount
+    TestBasicMerchant testa a integração da classe de serviço BasicMerchant
     com a API de credenciamento
     """
 
