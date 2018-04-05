@@ -17,17 +17,15 @@ URLS = {
 }
 
 class ListTerminalDevices(Service):
-	"""
-	ListTerminalDevices é uma interface de comunicação
-	com o endpoint /merchant/listterminaldevices/
-	"""
+    """
+    ListTerminalDevices é uma interface de comunicação
+    com o endpoint /merchant/ListTerminalDevices/
+    """
 
-	def get_by_stonecode(self, stonecode):
-		LOGGER.info("Listing all terminals from merchant %s", stonecode)
+    def get_by_stonecode(self, stonecode):
+        LOGGER.info("Listing all terminals from merchant %s", stonecode)
 
         data = self._base_data(ENDPOINTS["terminal_devices"])
         data["StoneCode"] = stonecode
 
         return self._request(self.build_url(URLS["list"]), data)
-		
-
