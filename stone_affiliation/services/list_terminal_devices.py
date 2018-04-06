@@ -28,4 +28,4 @@ class ListTerminalDevices(Service):
         data = self._base_data(ENDPOINTS["terminal_devices"])
         data["StoneCode"] = stonecode
 
-        return self._request(self.build_url(URLS["list"]), data)
+        return self._request(self.build_url(URLS["terminal_devices"]), data)
