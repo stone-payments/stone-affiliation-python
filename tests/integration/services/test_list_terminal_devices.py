@@ -14,10 +14,11 @@ class TestListTerminalDevices(TestSuite):
         super().setUp()
         self.service = ListTerminalDevices(**self.get_config())
 
-    def test_get_by_stonecode(self):
+    def test_message_ok(self):
         resp = self.service.get_by_stonecode("192489630")
         status_message_ok = "OK"
-        self.
-        self.assertTrue(len(resp["TerminalList"]) > 0)
+        self.assertEquals(resp["Status"]["Message"], status_message_ok)
 
-# {'MessageList': [], 'Status': {'Code': 'OK', 'Message': 'OK', 'MessageRefCode': 'TXT_OK'}, 'TerminalList': []}
+    def test_get_list_terminal_by_stonecode(self):
+        resp = self.service.get_by_stonecode("846873720")
+        self.assertTrue(len(resp["TerminalList"]) > 0)
