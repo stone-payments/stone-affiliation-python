@@ -16,6 +16,7 @@ URLS = {
     "terminal_devices": "{}/{}/".format(BASE_PATH, ENDPOINTS["terminal_devices"])
 }
 
+
 class ListTerminalDevices(Service):
     """
     ListTerminalDevices é uma interface de comunicação
