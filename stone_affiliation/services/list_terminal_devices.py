@@ -27,6 +27,6 @@ class ListTerminalDevices(Service):
         LOGGER.info("Listing all terminals from merchant %s", stonecode)
 
         data = self._base_data(ENDPOINTS["terminal_devices"])
-        data["StoneCode"] = stonecode
+        data["MerchantId"] = stonecode
 
         return self._request(self.build_url(URLS["terminal_devices"]), data)
