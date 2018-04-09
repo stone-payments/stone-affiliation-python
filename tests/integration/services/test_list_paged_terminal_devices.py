@@ -6,7 +6,7 @@ from stone_affiliation.services import ListPagedTerminalDevices
 
 class TestListPagedTerminalDevices(TestSuite):
     """
-    ListTerminalDevices testa a integração da classe de serviço ListTerminalDevices
+    TestListPagedTerminalDevices testa a integração da classe de serviço ListPagedTerminalDevices
     com a API de credenciamento
     """
 
