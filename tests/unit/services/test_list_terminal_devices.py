@@ -23,6 +23,6 @@ class TestListTerminalDevices(TestSuite):
         mock_data_builder.assert_called_once_with("ListTerminalDevices")
         mock_url_builder.assert_called_once_with("/Merchant/MerchantService.svc/merchant/ListTerminalDevices/")
         mock_requester.assert_called_once_with("url_builded", {
-            "StoneCode": "516165165"
+            "MerchantId": "516165165"
         })
         self.assertEqual(actual, 'response')
