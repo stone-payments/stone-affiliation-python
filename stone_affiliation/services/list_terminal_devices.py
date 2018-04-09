@@ -23,10 +23,10 @@ class ListTerminalDevices(Service):
     com o endpoint /merchant/ListTerminalDevices/
     """
 
-    def get_by_stonecode(self, stonecode):
-        LOGGER.info("Listing all terminals from merchant %s", stonecode)
+    def get_by_merchant_id(self, merchant_id):
+        LOGGER.info("Listing all terminals from merchant %s", merchant_id)
 
         data = self._base_data(ENDPOINTS["terminal_devices"])
-        data["MerchantId"] = stonecode
+        data["MerchantId"] = merchant_id
 
         return self._request(self.build_url(URLS["terminal_devices"]), data)
