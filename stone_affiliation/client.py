@@ -3,7 +3,7 @@
 """
 Módulo do client principal
 """
-from stone_affiliation.services import (Merchant, BankAccount, BasicMerchant)
+from stone_affiliation.services import (Merchant, BankAccount, BasicMerchant, ListTerminalDevices)
 
 
 class StoneAffiliation(object):
@@ -31,5 +31,10 @@ class StoneAffiliation(object):
 
     def basic_merchant_service(self, user_email=None, source_ip=None):
         return BasicMerchant(user_email=user_email,
-                        source_ip=source_ip,
-                        **self.config)
+                             source_ip=source_ip,
+                             **self.config)
+
+    def list_terminal_devices(self, user_email=None, source_ip=None):
+        return ListTerminalDevices(user_email=user_email,
+                                   source_ip=source_ip,
+                                   **self.config)
