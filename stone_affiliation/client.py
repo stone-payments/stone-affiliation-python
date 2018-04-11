@@ -35,13 +35,3 @@ class StoneAffiliation(object):
         return BasicMerchant(user_email=user_email,
                              source_ip=source_ip,
                              **self.config)
-
-    def list_terminal_devices(self, user_email=None, source_ip=None):
-        return ListTerminalDevices(user_email=user_email,
-                                   source_ip=source_ip,
-                                   **self.config)
-
-    def list_paged_terminal_devices(self, user_email=None, source_ip=None, ):
-        return ListPagedTerminalDevices(user_email=user_email,
-                                        source_ip=source_ip,
-                                        **self.config)
