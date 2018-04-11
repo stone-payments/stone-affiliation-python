@@ -2,7 +2,7 @@
 
 from tests.suite import TestSuite
 from stone_affiliation import StoneAffiliation
-from stone_affiliation.services import (Merchant, BankAccount, BasicMerchant)
+from stone_affiliation.services import (Merchant, BankAccount, BasicMerchant, Terminal)
 
 MOCK_CONFIG = {
     "api_url": "api_url",
@@ -35,3 +35,7 @@ class TestStoneAffiliation(TestSuite):
     def test_basic_merchant_service(self):
         actual = self.client.basic_merchant_service("user_email", "source_ip")
         self.assertTrue(isinstance(actual, BasicMerchant))
+
+    def test_terminal_service(self):
+        actual = self.client.terminal_service("user_email", "source_ip")
+        self.assertTrue(isinstance(actual, Terminal))
