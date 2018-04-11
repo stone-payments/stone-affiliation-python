@@ -5,9 +5,7 @@ Módulo do client principal
 """
 from stone_affiliation.services import (Merchant,
                                         BankAccount,
-                                        BasicMerchant,
-                                        ListTerminalDevices,
-                                        ListPagedTerminalDevices)
+                                        BasicMerchant)
 
 
 class StoneAffiliation(object):
