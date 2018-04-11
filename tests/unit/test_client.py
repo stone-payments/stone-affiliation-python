@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from mock import patch
 from tests.suite import TestSuite
 from stone_affiliation import StoneAffiliation
-from stone_affiliation.services import (Merchant, BankAccount, BasicMerchant,
-                                        ListPagedTerminalDevices, ListTerminalDevices)
+from stone_affiliation.services import (Merchant, BankAccount, BasicMerchant)
 
 MOCK_CONFIG = {
     "api_url": "api_url",
@@ -37,11 +35,3 @@ class TestStoneAffiliation(TestSuite):
     def test_basic_merchant_service(self):
         actual = self.client.basic_merchant_service("user_email", "source_ip")
         self.assertTrue(isinstance(actual, BasicMerchant))
-
-    def test_list_paged_terminal_service(self):
-        actual = self.client.list_paged_terminal_devices("user_email", "source_ip")
-        self.assertTrue(isinstance(actual, ListPagedTerminalDevices))
-
-    def test_list_terminal_service(self):
-        actual = self.client.list_terminal_devices("user_email", "source_ip")
-        self.assertTrue(isinstance(actual, ListTerminalDevices))
