@@ -77,4 +77,4 @@ class Merchant(Service):
             "RowsPerPage": limit
         }
         return self._request(self.build_url(URLS["list"]), data)
-   
+
