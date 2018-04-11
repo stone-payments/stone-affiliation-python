@@ -34,8 +34,8 @@ class StoneAffiliation(object):
 
     def basic_merchant_service(self, user_email=None, source_ip=None):
         return BasicMerchant(user_email=user_email,
-                             source_ip=source_ip,
-                             **self.config)
+                        source_ip=source_ip,
+                        **self.config)
 
     def terminal_service(self, user_email=None, source_ip=None):
         return Terminal(user_email=user_email,

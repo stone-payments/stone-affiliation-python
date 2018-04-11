@@ -12,15 +12,11 @@ LOGGER = logging.getLogger(__name__)
 BASE_PATH = "{}/merchant".format(CONTEXTS["merchant"])
 
 ENDPOINTS = {
-    "list": "ListMerchants",
-    "terminal_devices": "ListTerminalDevices",
-    "list_paged_terminal_devices": "ListPagedTerminalDevices"
+    "list": "ListMerchants"
 }
 
 URLS = {
-    "list": "{}/{}/".format(BASE_PATH, ENDPOINTS["list"]),
-    "terminal_devices": "{}/{}/".format(BASE_PATH, ENDPOINTS["terminal_devices"]),
-    "list_paged_terminal_devices": "{}/{}/".format(BASE_PATH, ENDPOINTS["list_paged_terminal_devices"])
+    "list": "{}/{}/".format(BASE_PATH, ENDPOINTS["list"])
 }
 
 DEFAULT_LIMIT_PAGE = 100
