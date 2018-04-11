@@ -4,7 +4,7 @@ from tests.integration.services.suite import TestSuite
 from stone_affiliation.services import Terminal
 
 
-class TestMerchant(TestSuite):
+class TestTerminal(TestSuite):
     """
     TestTerminal testa a integração da classe de serviço Terminal
     com a API de credenciamento
