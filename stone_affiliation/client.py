@@ -5,7 +5,8 @@ Módulo do client principal
 """
 from stone_affiliation.services import (Merchant,
                                         BankAccount,
-                                        BasicMerchant)
+                                        BasicMerchant,
+                                        Terminal)
 
 
 class StoneAffiliation(object):
@@ -35,3 +36,8 @@ class StoneAffiliation(object):
         return BasicMerchant(user_email=user_email,
                              source_ip=source_ip,
                              **self.config)
+
+    def terminal_service(self, user_email=None, source_ip=None):
+        return Terminal(user_email=user_email,
+                        source_ip=source_ip,
+                        **self.config)
