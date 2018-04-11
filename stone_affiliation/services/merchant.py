@@ -12,15 +12,11 @@ LOGGER = logging.getLogger(__name__)
 BASE_PATH = "{}/merchant".format(CONTEXTS["merchant"])
 
 ENDPOINTS = {
-    "list": "ListMerchants",
-    "terminal_devices": "ListTerminalDevices",
-    "list_paged_terminal_devices": "ListPagedTerminalDevices"
+    "list": "ListMerchants"
 }
 
 URLS = {
-    "list": "{}/{}/".format(BASE_PATH, ENDPOINTS["list"]),
-    "terminal_devices": "{}/{}/".format(BASE_PATH, ENDPOINTS["terminal_devices"]),
-    "list_paged_terminal_devices": "{}/{}/".format(BASE_PATH, ENDPOINTS["list_paged_terminal_devices"])
+    "list": "{}/{}/".format(BASE_PATH, ENDPOINTS["list"])
 }
 
 DEFAULT_LIMIT_PAGE = 100
@@ -81,27 +77,3 @@ class Merchant(Service):
             "RowsPerPage": limit
         }
         return self._request(self.build_url(URLS["list"]), data)
-
-    def get_list_terminal_devices_by_merchant_id(self, merchant_id):
-        LOGGER.info("Listing all terminals from merchant %s", merchant_id)
-
-        data = self._base_data(ENDPOINTS["terminal_devices"])
-        data["MerchantId"] = merchant_id
-
-        return self._request(self.build_url(URLS["terminal_devices"]), data)
-
-    def get_list_paged_terminal_devices_by_stonecode(self, stonecode, page=DEFAULT_PAGE, limit=DEFAULT_LIMIT_PAGE):
-        LOGGER.info("Listing all terminals from merchant %s", stonecode)
-
-        query = [
-            self.build_condition("StoneCode", stonecode, Comparison.EQUALS)
-        ]
-
-        data = self._base_data(ENDPOINTS["list_paged_terminal_devices"])
-        data["QueryExpression"] = {
-            "ConditionList": query or [],
-            "PageNumber": page,
-            "RowsPerPage": limit
-        }
-
-        return self._request(self.build_url(URLS["list_paged_terminal_devices"]), data)

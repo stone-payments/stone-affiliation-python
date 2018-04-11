@@ -1,2 +1,9 @@
 # Main
 requests==2.18.4
+
+# Dev
+pytest==3.2.5
+mock==2.0.0
+pylint==1.7.4
+pytest-cov==2.4.0
+wheel
