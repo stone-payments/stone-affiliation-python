@@ -17,11 +17,11 @@ class TestTerminal(TestSuite):
     def test_get_list_paged_terminal_devices_by_stonecode(self):
         resp = self.service.get_by_stonecode(self.merchant["StoneCode"])
         terminal_list = resp["ListedTerminalDevices"]
-        min_terminal = 0
-        self.assertTrue(len(terminal_list) > min_terminal)
+
+        self.assertEqual(terminal_list[0]["StoneCode"], self.merchant["StoneCode"])
 
     def test_get_list_terminal_devices_by_merchant_id(self):
-        merchant_id = 10168
-        min_terminal_device = 0
-        resp = self.service.get_by_merchant_id(merchant_id)
-        self.assertTrue(len(resp["TerminalList"]) > min_terminal_device)
+        resp = self.service.get_by_merchant_id(self.merchant["Id"])
+        terminal_list = resp["TerminalList"]
+
+        self.assertTrue(terminal_list[0]["Id"] > 0)
