@@ -12,15 +12,16 @@ LOGGER = logging.getLogger(__name__)
 BASE_PATH = "{}/merchant".format(CONTEXTS["merchant"])
 
 ENDPOINTS = {
-    "list": "ListMerchants"
+    "list": "ListMerchants",
 }
 
 URLS = {
-    "list": "{}/{}/".format(BASE_PATH, ENDPOINTS["list"])
+    "list": "{}/{}/".format(BASE_PATH, ENDPOINTS["list"]),
 }
 
 DEFAULT_LIMIT_PAGE = 100
 DEFAULT_PAGE = 1
+
 
 class Merchant(Service):
     """
@@ -77,3 +78,4 @@ class Merchant(Service):
             "RowsPerPage": limit
         }
         return self._request(self.build_url(URLS["list"]), data)
+
