@@ -14,6 +14,9 @@ MOCK_USER = {
     "source_ip ": "source_ip"
 }
 
+TEST_MAIL = "test@mail.com"
+SOURCE_IP = "68.142.102.212"
+
 
 class TestStoneAffiliation(TestSuite):
     """
@@ -25,17 +28,25 @@ class TestStoneAffiliation(TestSuite):
         self.client = StoneAffiliation(**MOCK_CONFIG)
 
     def test_merchant_service(self):
-        actual = self.client.merchant_service("user_email", "source_ip")
+        actual = self.client.merchant_service(TEST_MAIL, SOURCE_IP)
         self.assertTrue(isinstance(actual, Merchant))
+        self.assertEqual(actual.user_email, TEST_MAIL)
+        self.assertEqual(actual.source_ip, SOURCE_IP)
 
     def test_bank_account_service(self):
-        actual = self.client.bank_account_service("user_email", "source_ip")
+        actual = self.client.bank_account_service(TEST_MAIL, SOURCE_IP)
         self.assertTrue(isinstance(actual, BankAccount))
+        self.assertEqual(actual.user_email, TEST_MAIL)
+        self.assertEqual(actual.source_ip, SOURCE_IP)
 
     def test_basic_merchant_service(self):
-        actual = self.client.basic_merchant_service("user_email", "source_ip")
+        actual = self.client.basic_merchant_service(TEST_MAIL, SOURCE_IP)
         self.assertTrue(isinstance(actual, BasicMerchant))
+        self.assertEqual(actual.user_email, TEST_MAIL)
+        self.assertEqual(actual.source_ip, SOURCE_IP)
 
     def test_terminal_service(self):
-        actual = self.client.terminal_service("user_email", "source_ip")
+        actual = self.client.terminal_service(TEST_MAIL, SOURCE_IP)
         self.assertTrue(isinstance(actual, Terminal))
+        self.assertEqual(actual.user_email, TEST_MAIL)
+        self.assertEqual(actual.source_ip, SOURCE_IP)
