@@ -13,18 +13,15 @@ BASE_PATH = "{}/merchant".format(CONTEXTS["merchant"])
 
 ENDPOINTS = {
     "list": "ListMerchants",
-    "terminal_devices": "ListTerminalDevices",
-    "list_paged_terminal_devices": "ListPagedTerminalDevices"
 }
 
 URLS = {
     "list": "{}/{}/".format(BASE_PATH, ENDPOINTS["list"]),
-    "terminal_devices": "{}/{}/".format(BASE_PATH, ENDPOINTS["terminal_devices"]),
-    "list_paged_terminal_devices": "{}/{}/".format(BASE_PATH, ENDPOINTS["list_paged_terminal_devices"])
 }
 
 DEFAULT_LIMIT_PAGE = 100
 DEFAULT_PAGE = 1
+
 
 class Merchant(Service):
     """
