@@ -38,18 +38,29 @@ class Terminal(Service):
 
         return self._request(self.build_url(URLS["terminal_devices"]), data)
 
-    def get_by_stonecode(self, stonecode, page=DEFAULT_PAGE, limit=DEFAULT_LIMIT_PAGE):
+    def get_by_stonecode(self, stonecode, disable_terminal_rent=True):
         LOGGER.info("Listing all terminals from stonecode %s", stonecode)
 
         query = [
             self.build_condition("StoneCode", stonecode, Comparison.EQUALS)
         ]
 
+        return self.list(query=query, disable_terminal_rent=disable_terminal_rent)
+
+    def list(self, page=DEFAULT_PAGE, limit=DEFAULT_LIMIT_PAGE, query=None, disable_terminal_rent=True):
+        """
+        list retorna terminal devices com base em query passada
+        """
+        LOGGER.info("Listing TerminalDevices. Page: %d; Limit: %d", page, limit)
+
         data = self._base_data(ENDPOINTS["paged_terminal_devices"])
+
+        if disable_terminal_rent:
+            data['DisableTerminalRentControlService'] = disable_terminal_rent
+
         data["QueryExpression"] = {
             "ConditionList": query or [],
             "PageNumber": page,
             "RowsPerPage": limit
         }
-
         return self._request(self.build_url(URLS["paged_terminal_devices"]), data)
