@@ -1,3 +1,4 @@
+![](https://travis-ci.org/stone-payments/stone-affiliation-python.svg?branch=integration%2Ftravis)
 # Stone Affiliation
 Este pacote contém a implementação de um cliente para a API de Credenciamento da Stone Co. em Python
 
