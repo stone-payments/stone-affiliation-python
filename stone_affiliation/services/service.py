@@ -6,7 +6,7 @@ Módulo contendo serviço base para outros serviços
 import logging
 from collections import OrderedDict
 from stone_affiliation import (request, processors)
-from stone_affiliation.models.operator import Comparison
+from stone_affiliation.models.operator import Comparison, Logical
 
 LOGGER = logging.getLogger(__name__)
 
@@ -43,7 +43,7 @@ class Service(object):
         return processors.track_error(response).json()
 
     @classmethod
-    def build_condition(cls, field, value, comparison_operator):
+    def build_condition(cls, field, value, comparison_operator, logical_operator=None):
         """
         build_condition recebe valores para construir condição
         para endpoints de listagem
@@ -56,11 +56,18 @@ class Service(object):
             raise TypeError(
                 "comparison_operator should be an Comparator Enum")
 
+        if logical_operator and not isinstance(logical_operator, Logical):
+            LOGGER.info("Invalid logical operator sent: %s", logical_operator)
+
+            raise TypeError(
+                "logical_operator should be an Logical Enum")
+
         if isinstance(value, list):
             value = ",".join([str(item) for item in value])
 
         return OrderedDict([
             ("__type", CONDITION_TYPE),
+            ("LogicalOperator", logical_operator.value if logical_operator else logical_operator),
             ("ComparisonOperator", comparison_operator.value),
             ("Field", field),
             ("Value", value)
