@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
+import logging
+from stone_affiliation.services.service import Service, CONTEXTS
+from stone_affiliation.models.operator import Comparison
 
 """
 Módulo contendo serviço que retorna terminais do lojista em diferentes contextos
 """
-import logging
-from stone_affiliation.services.service import Service, CONTEXTS
-from stone_affiliation.models.operator import Comparison
 
 LOGGER = logging.getLogger(__name__)
 

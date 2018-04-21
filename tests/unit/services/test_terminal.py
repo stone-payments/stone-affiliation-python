@@ -36,3 +36,24 @@ class TestTerminal(TestSuite):
             "MerchantId": "516165165"
         })
         self.assertEqual(actual, 'response')
+
+    @patch("stone_affiliation.services.service.Service._base_data", return_value={})
+    @patch("stone_affiliation.services.service.Service.build_url", return_value="url_builded")
+    @patch("stone_affiliation.services.service.Service._request", return_value="response")
+    def test_get_list_paged_terminal_devices_by_query(self, mock_requester, mock_url_builder,
+                  mock_data_builder):
+        actual = self.service.list(30, 1000, "query")
+
+        mock_data_builder.assert_called_once_with("ListPagedTerminalDevices")
+        mock_url_builder.assert_called_once_with(
+            "/Merchant/MerchantService.svc/merchant/ListPagedTerminalDevices/")
+        mock_requester.assert_called_once_with("url_builded", {
+            "DisableTerminalRentControlService": True,
+            "QueryExpression": {
+                "ConditionList": "query",
+                "PageNumber": 30,
+                "RowsPerPage": 1000
+            }
+        })
+        self.assertEqual(actual, 'response')
+
