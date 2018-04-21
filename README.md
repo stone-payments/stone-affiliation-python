@@ -66,7 +66,7 @@ O pacote gerado estará no diretório dist.
 
 ## Author
 
-Build with :heart: by Dev RC Team!
+Build with :heart: by Costumer Satisfaction Team!
 
 ## License
 
