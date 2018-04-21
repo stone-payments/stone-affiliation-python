@@ -27,6 +27,6 @@ class Logical(Enum):
     """
     Logical é um enum com operações de lógica
     """
-    AND = "And"
-    OR = "Or"
-    NOT = "Not"
+    AND = "AND"
+    OR = "OR"
+    NOT = "NOT"
