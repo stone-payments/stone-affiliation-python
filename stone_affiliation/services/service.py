@@ -97,3 +97,4 @@ class Service(object):
 
     def _build_signature(self, message):
         return processors.encrypt(self.secret_key, message)
+
