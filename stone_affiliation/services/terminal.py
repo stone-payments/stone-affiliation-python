@@ -64,3 +64,4 @@ class Terminal(Service):
             "RowsPerPage": limit
         }
         return self._request(self.build_url(URLS["paged_terminal_devices"]), data)
+

@@ -56,3 +56,4 @@ class TestTerminal(TestSuite):
             }
         })
         self.assertEqual(actual, 'response')
+
