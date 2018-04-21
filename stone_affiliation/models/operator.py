@@ -30,3 +30,4 @@ class Logical(Enum):
     AND = "And"
     OR = "Or"
     NOT = "Not"
+

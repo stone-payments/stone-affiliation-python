@@ -60,3 +60,4 @@ class TestTerminal(TestSuite):
         resp = self.service.list(query=query)
         self.assertEqual(resp["ListedTerminalDevices"][0]['StoneCode'], stonecode)
         self.assertEqual(resp["ListedTerminalDevices"][0]['SerialNumber'], serial_number)
+
