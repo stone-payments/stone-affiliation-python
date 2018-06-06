@@ -6,7 +6,8 @@ Módulo do client principal
 from stone_affiliation.services import (Merchant,
                                         BankAccount,
                                         BasicMerchant,
-                                        Terminal)
+                                        Terminal,
+                                        EnvironmentAvailability)
 
 
 class StoneAffiliation(object):
@@ -41,3 +42,8 @@ class StoneAffiliation(object):
         return Terminal(user_email=user_email,
                         source_ip=source_ip,
                         **self.config)
+
+    def environment_availability_service(self, user_email=None, source_ip=None):
+        return EnvironmentAvailability(user_email=user_email,
+                                       source_ip=source_ip,
+                                       **self.config)
