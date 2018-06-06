@@ -6,7 +6,7 @@ from stone_affiliation.services import EnvironmentAvailability
 
 class TestEnvironmentAvailability(TestSuite):
     """
-    TestBasicMerchant testa a integração da classe de serviço BasicMerchant
+    TestEnvironmentAvailability testa a integração da classe de serviço EnvironmentAvailability
     com a API de credenciamento
     """
 
