@@ -24,8 +24,8 @@ class TestEnvironmentAvailability(TestSuite):
                    mock_data_builder):
         actual = self.service.check()
 
-        mock_data_builder.assert_called_once_with("testenvironmentavailability")
+        mock_data_builder.assert_called_once_with("TestEnvironmentAvailability")
         mock_url_builder.assert_called_once_with(
-            "/Merchant/MerchantService.svc/test/testenvironmentavailability/")
+            "/Merchant/MerchantService.svc/test/TestEnvironmentAvailability/")
         mock_requester.assert_called_once_with("url_builded", mock_data_builder.return_value)
         self.assertEqual(actual, 'response')
